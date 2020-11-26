@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/particles.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/profile.css">
+
+  <link rel="icon" href="../assets/images/movieicon.png" type="image/gif">
+  <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+  <script src="https://use.fontawesome.com/ca8f7ab770.js"></script>
+  <title>Profile</title>
+</head>
+
+<body>
+  <div class="page-bg"></div>
+
+  <div class="animation-wrapper">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #020024;">
+    <a class="navbar-brand" href="/">Movie Journal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Genre
+          </a>
+          <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/toprated">Top Rated Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/upcoming">Upcoming movies</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-right">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            Profile
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/profile">My Movie Journal</a></li>
+            <li>
+              <a href="/logout">Logout</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </nav>
+
+
+
+  <!--<div>
+		<div class="profile-avatar">
+			<span class="avatar"> <img src="https://s.ltrbxd.com/static/img/avatar220.af307bc1.png" width="80" height="80">  </span>
+		</div>
+		<div class="profile-name">
+				<h1 title="myusername" class="title-1">myusername</h1>
+	   </div>
+    <div class="profile-stats js-profile-stats">
+    				<h4 class="profile-statistic statistic"><a href="/myusername/films/"><span class="value">19</span><span class="definition"> Films</span></a></h4>
+    				<h4 class="profile-statistic statistic"><a href="/myusername/lists/"><span class="value">2</span><span class="definition"> Lists</span></a></h4>
+    	</div>
+  </div>-->
+
+  <div class="container">
+    <div style="text-align:right; " class="row">
+      <div class="col-xs-6">
+        <i style="text-align:center; font-size: 15rem; color: rgba(255, 255, 255, 0.589);" class="ace-icon fa fa-user"></i>
+      </div>
+      <div style="text-align:left;" class="col-xs-6">
+        <h1 style="color: rgba(255, 255, 255, 0.589);">
+          Lukas
+        </h1>
+        <h1 style="color: rgba(255, 255, 255, 0.589);">
+          ltonini@unibz.it
+        </h1>
+        <h1 style="color: rgba(255, 255, 255, 0.589);">
+          Number of Reviews: 3
+        </h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Edit Profile
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <label for="exampleInputEmail1">New Email</label>
+                <input type="Email" class="form-control" id="exampleInputPassword1" placeholder="Email">
+                <label for="exampleInputEmail1">New Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="New Password">
+                <label for="exampleInputEmail1">Confirm Password</label>
+                <input type="confpassword" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  ---------------------------------------------- -->
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div id="my-movies-2" class="my-movies">
+      <div class="tabbable">
+        <ul class="nav nav-tabs padding-18">
+          <li class="active">
+            <a data-toggle="tab" href="#mymovies"><i class="ace-icon fa fa-user bigger-120"></i> My Movies </a>
+          </li>
+
+          <li>
+            <a data-toggle="tab" href="#reviews"><i class="ace-icon fa fa-rss bigger-120"></i> Reviews</a>
+          </li>
+
+          <li>
+            <a data-toggle="tab" href="#watchlist"><i class="ace-icon fa fa-users bigger-120"></i> Watchlist</a>
+          </li>
+
+          <li>
+            <a data-toggle="tab" href="#lists"><i class="ace-icon fa fa-users bigger-120"></i> List</a>
+          </li>
+        </ul>
+
+        <div class="tab-content no-border padding-24">
+          <div id="mymovies" class="tab-pane in active">
+            <!--<p class="h1 text-center">put movies watched here, just like upcomingmovies</p>-->
+
+
+            <!--We wanted to reuse the same layout/style of the other pages to make it look more familiar.
+                Of course it doesn't have to point to the Upcoming movies, but it will show the paeson movies
+              -->
+            <div id="movie-display">
+              <div class="container">
+                <div class="row">
+                  <div class="genreLabel">
+                    <h1 id="movieGenreLabel"></h1>
+                  </div>
+                  <div id="movie-grid">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalAddMovie" tabindex="-1" role="dialog" aria-labelledby="modalAddMovie" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalAddMovie">Add this movie to a list</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <select class="custom-select">
+                      <option selected>watched</option>
+                      <option value="1">to watch</option>
+                      <option value="2">favourites</option>
+                      <option value="3">other</option>
+                    </select>
+
+                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label
+                        for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    </div>
+
+                    <textarea class="form-control" rows="5" placeholder="Insert your review here" id="comment"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Remove from list</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+            <script type="text/javascript" src="../assets/js/profile.js"></script>
+            <script type="text/javascript" src="../assets/js/index.js"></script>
+            <script type="text/javascript" src="../assets/js/genres.js"></script>
+            <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
+          </div>
+
+          <div id="reviews" class="tab-pane">
+            <p class="h1 text-center">put reviews here</p>
+
+            <div class="card-deck">
+              <div class="card">
+                <img class="card-img-top" src="http://henrycavill.org/images/Films/2013-Man-of-Steel/posters/3-Walmart-Superman-a.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Man Of Steel</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Rating: </small> 4/5 </p>
+                </div>
+              </div>
+
+              <div class="card">
+                <img class="card-img-top" src="http://cdn.collider.com/wp-content/uploads/2017/03/the-dark-tower-poster.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">The Card Tower</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"><small class="text-muted">Rating: </small> 4/5 </p>
+                </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="http://cdn.collider.com/wp-content/uploads/2017/05/blade-runner-2049-poster-ryan-gosling.jpeg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Blade Runner</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <p class="card-text"><small class="text-muted">Rating: </small> 5/5 </p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div id="mymovies" class="tab-pane">
+
+          </div>
+          <div id="watchlist" class="tab-pane">
+            <p class="h1 text-center">put watchlist here, just like upcomingmovie</p>
+          </div>
+
+          <div id="lists" class="tab-pane">
+            <p class="h1 text-center">put lists here</p>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+  <script type="text/javascript" src="../assets/js/genres.js"></script>
+
+
+
+  <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
+</body>
+
+</html>

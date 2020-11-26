@@ -1,0 +1,45 @@
+#error {
+	height: 100px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+  text-align: center;
+	margin: auto;
+}
+
+h1 {
+    height: 70px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.neon {
+  color: #000;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+}
+
+.card-body {
+  padding: 0.5rem;
+}
+
+.card-title {
+  height: 60px;
+  font-size: 17px;
+}
+
+.card {
+  width: 210px;
+}

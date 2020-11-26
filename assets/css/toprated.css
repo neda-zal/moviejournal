@@ -1,0 +1,98 @@
+.form-control {
+  color: #000 !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  margin-left: 20px;
+}
+
+.form-control:hover {
+  color: #ffffff !important;
+  background: #f6b93b;
+  border-color: #f6b93b !important;
+  transition: all 0.4s ease 0s;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  padding: 10px 0 10px 0;
+}
+
+.neon {
+  color: #000;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 40px #0ff,
+    0 0 80px #0ff,
+    0 0 90px #0ff,
+    0 0 100px #0ff,
+    0 0 150px #0ff;
+}
+
+body, html {
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #999;
+    font-size: 15px;
+}
+
+nav {
+	padding: 10px 0 10px 0;
+	margin-bottom: 10px;
+}
+
+.navbar {
+  margin: 14px;
+  background-color: #343a40!important;
+}
+
+.navbar-header {
+  margin: 20px 0 20px 20px;
+}
+
+button.btnModal{
+    background-color: #020024;
+    border: #020024;
+}
+
+.btn-block {
+    margin-top: 10px;
+}
+
+div>#movie-display {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 150px;
+    opacity: 1.0;
+    position: relative;
+}
+
+.container {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 15px 10px 15px 10px;
+}
+
+td, th {
+    text-align: center;
+    font-size: 17px;
+    color: black;
+    vertical-align:middle;
+}
+
+#table {
+  position: relative;
+}

@@ -1,0 +1,42 @@
+<div class="page-bg"></div>
+
+  <div class="animation-wrapper">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+  </div>
+
+  <div class="p-2 bd-highlight">
+    <div class="container" style="margin-top: 2%;">
+      <form action="/results" method="GET">
+        <div class="input-group mb-3">
+          <input name="search" type="text" class="form-control" placeholder="Movie title" aria-label="Movie title" aria-describedby="button-addon2">
+          <button class="btn btn-dark" type="submit">Search Again</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div>
+    <h1 class="align-middle neon" style="font-weight: bold; margin: 30px;">Your Search Results</h1>
+  </div>
+
+<div class="wrapper">
+  <div class="container w-90">
+    <div class="row justify-content-center mt-4 mb-3">
+
+      {{#each data}}
+        <div class="card m-2">
+            <img src="{{this.Poster}}"style="height: 300px;" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <p class="card-title"><strong>{{this.Title}}</strong></p>
+              <p class="card-text text-left">Year: {{this.Year}}</p>
+              <a href="{{imdburl this.imdbID}}">IMDB Profile</a>
+            </div>
+        </div>
+      {{/each}}
+
+    </div>
+  </div>
+</div>
