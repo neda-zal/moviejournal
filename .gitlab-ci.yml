@@ -186,6 +186,7 @@ package_hunter:
     entrypoint:                                                                [""]
   needs:                                                                       []
   script:
+    - docker login registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli:latest --username nedazal --password nedaza123
     - rm -r spec locale .git app/assets/images doc/
     - cd .. && tar -I "gzip --best" -cf gitlab.tgz gitlab/
     - DEBUG=* HTR_user=$PACKAGE_HUNTER_USER HTR_pass=$PACKAGE_HUNTER_PASS node /usr/src/app/cli.js analyze --format gitlab gitlab.tgz | tee $CI_PROJECT_DIR/gl-dependency-scanning-report.json
