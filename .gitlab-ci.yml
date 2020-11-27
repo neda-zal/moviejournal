@@ -125,6 +125,7 @@ secrets-sast:
 dependency_scanning:
   stage:                                                                       test
   needs:                                                                       []
+  allow_failure:                                                               true
   variables:
     DS_MAJOR_VERSION:                                                          2
     DS_EXCLUDED_PATHS:                                                         "qa/qa/ee/fixtures/secure_premade_reports,spec,ee/spec"  # GitLab-specific
@@ -181,6 +182,7 @@ dependency_scanning:
 # The job below analysis dependencies for malicous behavior
 package_hunter:
   stage:                                                                       test
+  allow_failure:                                                               true
   image:
     name:                                                                      registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli:latest
     entrypoint:                                                                [""]
