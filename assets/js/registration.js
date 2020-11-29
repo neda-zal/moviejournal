@@ -11,18 +11,15 @@ function validate() {
 
     if (c.value === "" || d.value === "" || a.value.length < 6 || b.value.length < 6 ||
           e.value.length < 6) {
-      if(a)
-      {
-        let message2 = document.getElementById('invalid-feedback2');
-        if (a.value.length < 6) {
-            message2.style.color = badColor;
-            message2.innerHTML = "Username should contain at least 6 characters";
-        }
-
-        else {
-          message2.innerHTML = "";
-        }
-      }
+      if (a) {
+   let message2 = document.getElementById('invalid-feedback2');
+   if (a.value.length < 6) {
+      message2.style.color = badColor;
+      message2.innerHTML = "Username should contain at least 6 characters";
+   } else {
+      message2.innerHTML = "";
+   }
+}
 
       if(b)
       {

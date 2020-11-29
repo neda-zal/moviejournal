@@ -1,18 +1,3 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-   <meta charset="utf-8">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="../assets/css/particles.css">
-   <link rel="stylesheet" type="text/css" href="../assets/css/profile.css">
-
-   <link rel="icon" href="../assets/images/movieicon.png" type="image/gif">
-   <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
-   <script src="https://use.fontawesome.com/ca8f7ab770.js"></script>
-   <title>Profile</title>
-</head>
-
 <body>
    <div class="page-bg"></div>
 
@@ -65,21 +50,6 @@
       </div>
    </nav>
 
-
-
-   <!--<div>
-		<div class="profile-avatar">
-			<span class="avatar"> <img src="https://s.ltrbxd.com/static/img/avatar220.af307bc1.png" width="80" height="80">  </span>
-		</div>
-		<div class="profile-name">
-				<h1 title="myusername" class="title-1">myusername</h1>
-	   </div>
-    <div class="profile-stats js-profile-stats">
-    				<h4 class="profile-statistic statistic"><a href="/myusername/films/"><span class="value">19</span><span class="definition"> Films</span></a></h4>
-    				<h4 class="profile-statistic statistic"><a href="/myusername/lists/"><span class="value">2</span><span class="definition"> Lists</span></a></h4>
-    	</div>
-  </div>-->
-
    <div class="container">
       <div style="text-align:right; " class="row">
          <div class="col-xs-6">
@@ -87,10 +57,10 @@
          </div>
          <div style="text-align:left;" class="col-xs-6">
             <h1 style="color: rgba(255, 255, 255, 0.589);">
-               Lukas
+               {{data.name}}
             </h1>
             <h1 style="color: rgba(255, 255, 255, 0.589);">
-               ltonini@unibz.it
+               {{data.email}}
             </h1>
             <h1 style="color: rgba(255, 255, 255, 0.589);">
                Number of Reviews: 3
@@ -214,16 +184,6 @@
                         </div>
                      </div>
                   </div>
-
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-                  <script type="text/javascript" src="../assets/js/profile.js"></script>
-                  <script type="text/javascript" src="../assets/js/index.js"></script>
-                  <script type="text/javascript" src="../assets/js/genres.js"></script>
-                  <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                  <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
                </div>
 
                <div id="reviews" class="tab-pane">
@@ -275,15 +235,4 @@
          </div>
       </div>
    </div>
-
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-   <script type="text/javascript" src="../assets/js/genres.js"></script>
-
-
-
-   <link rel="stylesheet" href="../assets/css/bootstrap/bootstrap.min.css">
 </body>
-
-</html>

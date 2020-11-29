@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const handlebars = require('express-handlebars');
 const Handlebars = require('handlebars');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -35,14 +36,14 @@ app.use(require('./routes/profile'));
 
 // session
 app.use(session({
-    key: 'user_sid',
     secret: 'topsecret',
-    resave: true,
-    saveUninitialized: false,
+    resave: false,
+    saveUninitialized: true,
     cookie: {
         expires: 600000
     }
 }));
+app.use(cookieParser());
 
 let {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 app.set('view engine', 'handlebars');

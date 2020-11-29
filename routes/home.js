@@ -7,6 +7,7 @@ const path = require('path');
 const session = require('express-session');
 const fetch = require('node-fetch');
 const cookieParser = require('cookie-parser');
+const localStorage = require('localStorage');
 
 const app = express();
 
@@ -35,7 +36,6 @@ router.use(bodyParser.text({
 
 // for 304
 app.disable('etag');
-app.use(cookieParser());
 
 router.get('/', function(req, res) {
   res.sendFile('../index.html', {
@@ -48,25 +48,29 @@ router.post('/', (req, res) => {
   let username = req.body.username,
     password = req.body.password;
 
-  const user = User.findOne({
+  User.findOne({
       where: {
         username: username,
         password: password
       }
-   });
-   if(!user) {
-      const error = new Error('Not authenticated.');
-      error.statusCode = 401;
-      throw error;
-   }
-   /* .then(user => {
-      res.cookie('username', username);
+   }).then(user => {
+      res.cookie('username', username, {
+                        expire: 1 / 24, // One hour
+                        path: '/',
+                        secure: false // <-- false here when served over HTTP
+      });
       res.cookie('LoggedIn', true);
+      res.cookie('userId', user.id, {
+                        expire: 1 / 24, // One hour
+                        path: '/',
+                        secure: false // <-- false here when served over HTTP
+      });
+      localStorage.setItem('userId', user.id);
       res.redirect('/profile');
-    })
-    .catch((error) => {
-      throw error;
-   });*/
+   }).catch(error => {
+      console.log(error);
+   });
+
 });
 
 module.exports = router;
