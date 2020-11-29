@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const session = require('express-session');
-const fetch = require('node-fetch');
 const cookieParser = require('cookie-parser');
 const localStorage = require('localStorage');
 

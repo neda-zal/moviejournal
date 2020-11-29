@@ -12,10 +12,10 @@ router.get('/profile', function(req, res) {
          id: localStorage.getItem('userId')
        }
     }).then(user => {
-      console.log(user);
       res.render('profilemain', {layout: 'profile', data: user.dataValues});
+   }).catch(error => {
+      console.log(error);
    });
-
 });
 
 router.get('/logout', function(req, res) {

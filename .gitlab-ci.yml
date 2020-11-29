@@ -43,6 +43,10 @@ test:
         - npm
     script:
         - npm test
+        - npx nyc --reporter cobertura mocha
+    artifacts:
+      reports:
+         cobertura:                                                            coverage/cobertura-coverage.xml
 
 code_quality:
   stage:                                                                       test
