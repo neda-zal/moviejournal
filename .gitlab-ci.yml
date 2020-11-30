@@ -2,6 +2,7 @@ image:                          node:latest
 
 include:
   - template:                   Code-Quality.gitlab-ci.yml
+  - template:                   Dependency-Scanning.gitlab-ci.yml
 
 stages:
   - npm
@@ -131,25 +132,9 @@ license_scanning:
     expire_in:                  1 week
   dependencies:                 []
 
-
-package_hunter:
-  stage:                        test
-  allow_failure:                true
-  image:
-    name:                       registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli:latest
-    entrypoint:                 [""]
-  needs:                        []
-  script:
-    - docker login registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli:latest --username nedazal --password nedaza123
-    - rm -r spec locale .git app/assets/images doc/
-    - cd .. && tar -I "gzip --best" -cf gitlab.tgz gitlab/
-    - DEBUG=* HTR_user=$PACKAGE_HUNTER_USER HTR_pass=$PACKAGE_HUNTER_PASS node /usr/src/app/cli.js analyze --format gitlab gitlab.tgz | tee $CI_PROJECT_DIR/gl-dependency-scanning-report.json
-  artifacts:
-    paths:
-      - gl-dependency-scanning-report.json  # GitLab-specific
-    reports:
-      dependency_scanning:      gl-dependency-scanning-report.json
-    expire_in:                  1 week  # GitLab-specific
+gemnasium-dependency_scanning:
+  variables:
+    DS_REMEDIATE:               "false"
 
 trigger_build:
   stage:                        deploy
