@@ -1,7 +1,7 @@
-image:                                                                         node:latest
+image:                          node:latest
 
 include:
-  - template:                                                                  Code-Quality.gitlab-ci.yml
+  - template:                   Code-Quality.gitlab-ci.yml
 
 stages:
   - npm
@@ -15,7 +15,7 @@ default:
         - echo "Job executed successfully"
 
 npm:
-    stage:                                                                     npm
+    stage:                      npm
     script:
         - npm config set registry ${CI_NPM_REGISTRY}
         - npm install
@@ -23,35 +23,35 @@ npm:
         paths:
             - node_modules/
     artifacts:
-        expire_in:                                                             1 hour
-        when:                                                                  on_success
+        expire_in:              1 hour
+        when:                   on_success
         paths:
             - node_modules/
 
 test_db:
-    stage:                                                                     test
-    when:                                                                      on_success
+    stage:                      test
+    when:                       on_success
     dependencies:
         - npm
     script:
         - node ./models/user.js
 
 test:
-    stage:                                                                     test
-    when:                                                                      on_success
+    stage:                      test
+    when:                       on_success
     dependencies:
         - npm
     script:
         - npx nyc --reporter cobertura mocha
     artifacts:
       reports:
-         cobertura:                                                            coverage/cobertura-coverage.xml
+         cobertura:             coverage/cobertura-coverage.xml
 
 code_quality:
-  stage:                                                                       test
-  needs:                                                                       []
+  stage:                        test
+  needs:                        []
   variables:
-    CODE_QUALITY_IMAGE:                                                        "registry.gitlab.com/gitlab-org/ci-cd/codequality:0.85.18"
+    CODE_QUALITY_IMAGE:         "registry.gitlab.com/gitlab-org/ci-cd/codequality:0.85.18"
   script:
     - |
       if ! docker info &>/dev/null; then
@@ -67,77 +67,91 @@ code_quality:
         "$CODE_QUALITY_IMAGE" /code
   artifacts:
     reports:
-      codequality:                                                             gl-code-quality-report.json
+      codequality:              gl-code-quality-report.json
     paths:
-      - gl-code-quality-report.json  # GitLab-specific
-    expire_in:                                                                 1 week  # GitLab-specific
+      - gl-code-quality-report.json
+    expire_in:                  1 week
 
-# We need to duplicate this job's definition because it seems it's impossible to
-# override an included `only.refs`.
-# See https://gitlab.com/gitlab-org/gitlab/issues/31371.
 .sast:
-  stage:                                                                       test
-  # `needs:                                                                    []` starts the job immediately in the pipeline
-  # https://docs.gitlab.com/ee/ci/yaml/README.html#needs
-  needs:                                                                       []
+  stage:                        test
+  needs:                        []
   artifacts:
     paths:
-      - gl-sast-report.json  # GitLab-specific
+      - gl-sast-report.json
     reports:
-      sast:                                                                    gl-sast-report.json
-    expire_in:                                                                 1 week  # GitLab-specific
+      sast:                     gl-sast-report.json
+    expire_in:                  1 week
   variables:
-    DOCKER_TLS_CERTDIR:                                                        ""
-    SAST_ANALYZER_IMAGE_PREFIX:                                                "registry.gitlab.com/gitlab-org/security-products/analyzers"
-    SAST_ANALYZER_IMAGE_TAG:                                                   2
-    SAST_BRAKEMAN_LEVEL:                                                       2  # GitLab-specific
-    SAST_EXCLUDED_PATHS:                                                       qa,spec,doc,ee/spec,config/gitlab.yml.example  # GitLab-specific
-    SAST_DISABLE_BABEL:                                                        "true"
+    DOCKER_TLS_CERTDIR:         ""
+    SAST_ANALYZER_IMAGE_PREFIX: "registry.gitlab.com/gitlab-org/security-products/analyzers"
+    SAST_ANALYZER_IMAGE_TAG:    2
+    SAST_BRAKEMAN_LEVEL:        2
+    SAST_EXCLUDED_PATHS:        qa,spec,doc,ee/spec,config/gitlab.yml.example
+    SAST_DISABLE_BABEL:         "true"
   script:
     - /analyzer run
 
 brakeman-sast:
-  extends:                                                                     .sast
+  extends:                      .sast
   image:
-    name:                                                                      "$SAST_ANALYZER_IMAGE_PREFIX/brakeman:$SAST_ANALYZER_IMAGE_TAG"
+    name:                       "$SAST_ANALYZER_IMAGE_PREFIX/brakeman:$SAST_ANALYZER_IMAGE_TAG"
 
 eslint-sast:
-  extends:                                                                     .sast
+  extends:                      .sast
   image:
-    name:                                                                      "$SAST_ANALYZER_IMAGE_PREFIX/eslint:$SAST_ANALYZER_IMAGE_TAG"
+    name:                       "$SAST_ANALYZER_IMAGE_PREFIX/eslint:$SAST_ANALYZER_IMAGE_TAG"
 
 nodejs-scan-sast:
-  extends:                                                                     .sast
+  extends:                      .sast
   image:
-    name:                                                                      "$SAST_ANALYZER_IMAGE_PREFIX/nodejs-scan:$SAST_ANALYZER_IMAGE_TAG"
+    name:                       "$SAST_ANALYZER_IMAGE_PREFIX/nodejs-scan:$SAST_ANALYZER_IMAGE_TAG"
 
 secrets-sast:
-  extends:                                                                     .sast
+  extends:                      .sast
   image:
-    name:                                                                      "$SAST_ANALYZER_IMAGE_PREFIX/secrets:3"
+    name:                       "$SAST_ANALYZER_IMAGE_PREFIX/secrets:3"
   artifacts:
     paths:
-      - gl-secret-detection-report.json  # GitLab-specific
+      - gl-secret-detection-report.json
     reports:
-      sast:                                                                    gl-secret-detection-report.json
-    expire_in:                                                                 1 week  # GitLab-specific
+      sast:                     gl-secret-detection-report.json
+    expire_in:                  1 week
 
 license_scanning:
-  stage:                                                                       test
+  stage:                        test
   image:
-    name:                                                                      "registry.gitlab.com/gitlab-org/security-products/analyzers/license-finder:3"
-    entrypoint:                                                                [""]
-  needs:                                                                       []
+    name:                       "registry.gitlab.com/gitlab-org/security-products/analyzers/license-finder:3"
+    entrypoint:                 [""]
+  needs:                        []
   script:
     - /run.sh analyze .
   artifacts:
     reports:
-      license_scanning:                                                        gl-license-scanning-report.json
-    expire_in:                                                                 1 week  # GitLab-specific
-  dependencies:                                                                []
+      license_scanning:         gl-license-scanning-report.json
+    expire_in:                  1 week
+  dependencies:                 []
 
+
+package_hunter:
+  stage:                        test
+  allow_failure:                true
+  image:
+    name:                       registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli:latest
+    entrypoint:                 [""]
+  needs:                        []
+  script:
+    - docker login registry.gitlab.com/gitlab-com/gl-security/security-research/package-hunter-cli:latest --username nedazal --password nedaza123
+    - rm -r spec locale .git app/assets/images doc/
+    - cd .. && tar -I "gzip --best" -cf gitlab.tgz gitlab/
+    - DEBUG=* HTR_user=$PACKAGE_HUNTER_USER HTR_pass=$PACKAGE_HUNTER_PASS node /usr/src/app/cli.js analyze --format gitlab gitlab.tgz | tee $CI_PROJECT_DIR/gl-dependency-scanning-report.json
+  artifacts:
+    paths:
+      - gl-dependency-scanning-report.json  # GitLab-specific
+    reports:
+      dependency_scanning:      gl-dependency-scanning-report.json
+    expire_in:                  1 week  # GitLab-specific
 
 trigger_build:
-  stage:                                                                       deploy
+  stage:                        deploy
   script:
     - "curl -X POST -F token=7e868b65456e09d9f2f986f4987922 -F ref=master https://gitlab.com/api/v4/projects/22562690/trigger/pipeline"
