@@ -196,3 +196,7 @@ button.btnModal{
 .rating:hover>input:checked~label:before {
   opacity: 0.4
 }
+
+.container {
+   position: relative;
+}
