@@ -76,35 +76,10 @@ router.get('/toprated', function(req, res) {
     ])
       .then((data) => {
         let all = [];
-        for(let i = 0; i < data[0].results.length; i++) {
-          all.push(data[0].results[i]);
-        }
-        for(let i = 0; i < data[1].results.length; i++) {
-          all.push(data[1].results[i]);
-        }
-        for(let i = 0; i < data[2].results.length; i++) {
-          all.push(data[2].results[i]);
-        }
-        for(let i = 0; i < data[3].results.length; i++) {
-          all.push(data[3].results[i]);
-        }
-        for(let i = 0; i < data[4].results.length; i++) {
-          all.push(data[4].results[i]);
-        }
-        for(let i = 0; i < data[5].results.length; i++) {
-          all.push(data[5].results[i]);
-        }
-        for(let i = 0; i < data[6].results.length; i++) {
-          all.push(data[6].results[i]);
-        }
-        for(let i = 0; i < data[7].results.length; i++) {
-          all.push(data[7].results[i]);
-        }
-        for(let i = 0; i < data[8].results.length; i++) {
-          all.push(data[8].results[i]);
-        }
-        for(let i = 0; i < data[9].results.length; i++) {
-          all.push(data[9].results[i]);
+        for(let j = 0; j < 10; j++) {
+           for(let i = 0; i < data[j].results.length; i++) {
+             all.push(data[j].results[i]);
+           }
         }
         res.render('topratedmain', {layout: 'toprated', data: all});
     })
