@@ -28,37 +28,47 @@
       <div class="particle particle-4"></div>
     </div>
 
-	 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #020024;">
-	   <a class="navbar-brand" href="/">Movie Journal</a>
-	   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		  <span class="navbar-toggler-icon"></span>
-	   </button>
+    <nav class="navbar navbar-expand-lg navbar-dark p-2" style="background-color: #020024; font-size: 15px;">
+      <a class="navbar-brand" href="/home">Movie Journal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
 
 
-	   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		  <ul class="navbar-nav mr-auto">
-			 <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				  Genre
-				</a>
-				<div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
-				</div>
-			 </li>
-			 <li class="nav-item">
-				<a class="nav-link" onclick="openPage('/toprated');">Top Rated Movies</a>
-			 </li>
-			 <li class="nav-item">
-				<a class="nav-link" onclick="openPage('/upcoming');">Upcoming movies</a>
-			 </li>
-		  </ul>
-		  <div>
-			 <form name="loginas" class="form-inline p-3">
-				<input class="form-control border border-dark" style="width: 100px;" type="button" name="register" onclick="openPage('/register')" value="Register">
-				<input class="form-control border border-dark text-center" style="width: 100px;" name="login" type="button" value="Login" href="#" data-toggle="modal" data-target="#at-login">
-			 </form>
-		  </div>
-	   </div>
-	 </nav>
+      <div class="collapse navbar-collapse">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Genre
+               </a>
+               <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+               </div>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/topratedmovies">Top Rated Movies</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/upcomingmovies">Upcoming movies</a>
+            </li>
+         </ul>
+
+         <ul class="navbar-right">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                  Profile
+               </a>
+               <ul class="dropdown-menu">
+                  <li><a href="/profile">My Movie Journal</a></li>
+                  <li>
+                     <a href="/logout">Logout</a></li>
+               </ul>
+            </li>
+
+         </ul>
+
+      </div>
+   </nav>
 
     <div>
       <h1 class="align-middle neon" style="font-weight: bold; margin: 30px;">Upcoming movie list</h1>

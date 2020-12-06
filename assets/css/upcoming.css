@@ -1,19 +1,11 @@
 .form-control {
   color: #000 !important;
-  text-transform: uppercase;
   text-decoration: none;
   background: #ffffff;
   border: 1px solid #494949 !important;
   display: inline-block;
   transition: all 0.4s ease 0s;
   margin-left: 20px;
-}
-
-.form-control:hover {
-  color: #ffffff !important;
-  background: #f6b93b;
-  border-color: #f6b93b !important;
-  transition: all 0.4s ease 0s;
 }
 
 h1 {
@@ -63,20 +55,6 @@ html {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}
-
-nav {
-	padding: 10px 0 10px 0;
-	margin-bottom: 10px;
-}
-
-.navbar {
-  margin: 14px;
-  background-color: #343a40!important;
-}
-
-.navbar-header {
-  margin: 20px 0 20px 20px;
 }
 
 div>#movie-display {

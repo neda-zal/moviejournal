@@ -29,7 +29,7 @@ $('navbarDropdown').ready(function() {
 				filmHTML += '<button type="button" class="btnModal" data-toggle="modal" data-target="#exampleModal' + i + '" data-whatever="@' + i + '">' + '<img src="' + poster + '"></button>';
 				filmHTML += '<div class="modal fade" id="exampleModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
 				filmHTML += '<div class="modal-dialog" role="document">';
-				filmHTML += '<div class="modal-content col-sm-12">';
+				filmHTML += '<div class="modal-content col-sm-12" style="display: block; flex-direction: row;">';
 				filmHTML += '<div class="col-sm-6 moviePosterInModal">';
 				filmHTML += '<a href=""><img src="' + poster + '"></a>';
 				filmHTML += '</div><br>'; //close trailerLink

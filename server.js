@@ -33,6 +33,11 @@ app.use(require('./routes/toprated'));
 app.use(require('./routes/results'));
 app.use(require('./routes/genre'));
 app.use(require('./routes/profile'));
+app.use(require('./routes/index'));
+app.use(require('./routes/upcomingmovies'));
+app.use(require('./routes/topratedmovies'));
+app.use(require('./routes/genremovies'));
+app.use(require('./routes/searchresults'));
 
 // session
 app.use(session({

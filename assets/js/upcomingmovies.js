@@ -38,7 +38,7 @@ $(document).ready(function() {
           upcomingHTML += '<button type="button" class="btnModal" data-toggle="modal" data-target="#exampleModal' + i + '" data-whatever="@' + i + '">' + '<img src="' + poster + '"></button>';
           upcomingHTML += '<div class="modal fade" id="exampleModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
           upcomingHTML += '<div class="modal-dialog" role="document">';
-          upcomingHTML += '<div class="modal-content col-sm-12">';
+          upcomingHTML += '<div class="modal-content col-sm-12" style="display: block; flex-direction: row;">';
           upcomingHTML += '<div class="col-sm-6 moviePosterInModal">';
           upcomingHTML += '<a href="' + youtubeLink + '"><img src="' + poster + '"></a>';
           upcomingHTML += '</div><br>'; //close trailerLink

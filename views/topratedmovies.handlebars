@@ -1,0 +1,83 @@
+<div class="page-bg"></div>
+
+  <div class="animation-wrapper">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark p-2" style="background-color: #020024; font-size: 15px;">
+    <a class="navbar-brand" href="/home">Movie Journal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse">
+       <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Genre
+             </a>
+             <div id="navbarDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+             </div>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="/topratedmovies">Top Rated Movies</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="/upcomingmovies">Upcoming movies</a>
+          </li>
+       </ul>
+
+       <ul class="navbar-right" style="list-style-type: none;">
+          <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                Profile
+             </a>
+             <ul class="dropdown-menu">
+                <li><a style="text-decoration:none;" href="/profile">My Movie Journal</a></li>
+                <li>
+                   <a style="text-decoration:none;" href="/logout">Logout</a></li>
+             </ul>
+          </li>
+
+       </ul>
+
+    </div>
+ </nav>
+
+  <div>
+    <h1 class="align-middle neon" style="font-weight: bold; margin: 30px;">Top Rated Movies</h1>
+  </div>
+
+<div class="container">
+  <table class="table" id="example">
+    <thead>
+      <tr>
+        <th >#</th>
+        <th >Image</th>
+        <th >Title</th>
+        <th >Description</th>
+        <th >Vote Average</th>
+        <th >Release Date</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {{#each data}}
+      <tr>
+        <th style="vertical-align:middle;">{{math @index "+" 1}}</th>
+        <td valign="middle" style="padding: 0;"><img src='{{concat this.poster_path}}'/></td>
+        <td style="vertical-align:middle;">{{this.title}}</td>
+        <td style="vertical-align:middle;">{{this.overview}}</td>
+        <td style="vertical-align:middle;">{{this.vote_average}}</td>
+        <td style="vertical-align:middle;">{{this.release_date}}</td>
+      </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+</div>
