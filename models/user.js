@@ -1,7 +1,7 @@
 //jshint esversion:10
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
-//var Events = require('./events.js');
+const List = require('./list.js');
 
 const sequelize = new Sequelize('moviejournal', 'movieaddict@movieapplication', 'Systemsgroup4', {
 	host: 'movieapplication.mysql.database.azure.com',
@@ -20,7 +20,7 @@ const User = sequelize.define('User', {
 		primaryKey: true,
 		autoincrement: true
 	},
-	username: Sequelize.STRING,
+  username: Sequelize.STRING,
   password: Sequelize.STRING,
   email: Sequelize.STRING,
   name: Sequelize.STRING,
@@ -39,9 +39,9 @@ User.prototype.validPassword = function (password) {
 	return bcrypt.compareSync(password, this.password);
 };
 
-/*Proceduros.associate = (models) => {
-	Proceduros.BelongsTo(Events, {foreignKey : 'iduser'});
-};*/
+User.associate = (models) => {
+	User.hasMany(List, {as: 'List', foreignKey : 'userid'});
+};
 
 sequelize.sync()
     .then()

@@ -31,15 +31,21 @@ $('navbarDropdown').ready(function() {
 				filmHTML += '<div class="modal-dialog" role="document">';
 				filmHTML += '<div class="modal-content col-sm-12" style="display: block; flex-direction: row;">';
 				filmHTML += '<div class="col-sm-6 moviePosterInModal">';
-				filmHTML += '<a href=""><img src="' + poster + '"></a>';
+				filmHTML += '<img src="' + poster + '">';
 				filmHTML += '</div><br>'; //close trailerLink
 				filmHTML += '<div class="col-sm-6 movieDetails">';
+				filmHTML += '<form action="/addtowatchlist" method="post">';
 				filmHTML += '<div class="movieName">' + title + '</div><br>';
-				filmHTML += '<div class="linkToTrailer"><a href=""><span class="glyphicon glyphicon-play"></span>&nbspPlay trailer</a>' + '</div><br>';
 				filmHTML += '<div class="release">Release Date: ' + releaseDate + '</div><br>';
 				filmHTML += '<div class="overview">' + overview + '</div><br>';
 				filmHTML += '<div class="rating">Rating: ' + voteAverage + '/10</div><br>';
-				filmHTML += '</div>'; //close movieDetails
+				filmHTML += '<input id="movieId" style="display: none;" name="movietitle" value="'+ title + '" />';
+            filmHTML += '<input name="releaseDate" style="display: none;" value="' + releaseDate + '"/>';
+            filmHTML += '<input name="rating" style="display: none;" value="' + voteAverage + '"/>';
+            filmHTML += '<input name="overview" style="display: none;" value="' + overview + '"/>';
+            filmHTML += '<input name="poster" style="display: none;" value="' + poster + '"/>';
+				filmHTML += '<button type="submit" class="btn btn-primary pull-right mb-3">Add to watchlist</button><br>';
+				filmHTML += '</form></div>'; //close movieDetails
 				filmHTML += '</div>'; //close modal-content
 				filmHTML += '</div>'; //close modal-dialog
 				filmHTML += '</div>'; //close modal

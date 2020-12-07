@@ -34,15 +34,13 @@ $(document).ready(function() {
 
                let nowPlayingHTML = '';
 
-
                nowPlayingHTML += '<div class="col-sm-3 eachMovie">';
-
+               nowPlayingHTML += '<form action="/leavereview" method="post">';
                nowPlayingHTML += '<div class="add-button-container">';
                nowPlayingHTML += '<button type="button" class="btnModal" data-toggle="modal" data-target="#exampleModal' + i + '" data-whatever="@' + i + '">' + '<img src="' + poster + '"></button>';
-               nowPlayingHTML += '<button type="button" class="btn btn-add-movie" data-toggle="modal" data-target="#modalAddMovie" data-toggle="tooltip" data-placement="bottom" title="Add movie to a list">Modify</button>';
                nowPlayingHTML += '<div class="modal fade" id="exampleModal' + i + '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
                nowPlayingHTML += '<div class="modal-dialog" role="document">';
-               nowPlayingHTML += '<div class="modal-content col-sm-12">';
+               nowPlayingHTML += '<div class="modal-content col-sm-12" style="display: block; flex-direction: row;">';
                nowPlayingHTML += '<div class="col-sm-6 moviePosterInModal">';
                nowPlayingHTML += '<a href="' + youtubeLink + '"><img src="' + poster + '"></a>';
                nowPlayingHTML += '</div><br>'; //close trailerLink
@@ -52,12 +50,22 @@ $(document).ready(function() {
                nowPlayingHTML += '<div class="release">Release Date: ' + releaseDate + '</div><br>';
                nowPlayingHTML += '<div class="overview">' + overview + '</div><br>';
                nowPlayingHTML += '<div class="rating">Rating: ' + voteAverage + '/10</div><br>';
+               nowPlayingHTML += '<input id="movieId" style="display: none;" name="movietitle" value="'+ title + '" />';
+               nowPlayingHTML += '<input name="releaseDate" style="display: none;" value="' + releaseDate + '"/>';
+               nowPlayingHTML += '<input name="vote" style="display: none;" value="' + voteAverage + '"/>';
+               nowPlayingHTML += '<input name="overview" style="display: none;" value="' + overview + '"/>';
+               nowPlayingHTML += '<input name="poster" style="display: none;" value="' + poster + '"/>';
+               nowPlayingHTML += '</div>'; //close movieDetails
+               nowPlayingHTML += '<h5 class="modal-title" id="modalAddMovie">Add a review for this movie</h5>';
+               nowPlayingHTML += '<div class="rating"> <input type="radio" name="rating" value="5" id="5" checked><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3"id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label></div>'; //close off each div add-button-container
+               nowPlayingHTML += '<textarea name="review" class="form-control" rows="5" placeholder="Insert your review here" id="comment"></textarea>'; //close movieDetails
+               nowPlayingHTML += '<br><button id="comment" type="submit" class="btn btn-primary pull-right mb-3">Save changes</button>'; //close movieDetails
                nowPlayingHTML += '</div>'; //close movieDetails
                nowPlayingHTML += '</div>'; //close modal-content
                nowPlayingHTML += '</div>'; //close modal-dialog
                nowPlayingHTML += '</div>'; //close modal
                nowPlayingHTML += '</div>'; //close off each div
-               nowPlayingHTML += '</div>'; //close off each div add-button-container
+               nowPlayingHTML += '</form></div>'; //close off each div add-button-container
 
                $('#movie-grid').append(nowPlayingHTML);
             });
@@ -68,6 +76,7 @@ $(document).ready(function() {
    getUpcomingData();
 
 });
+
 
 function profileValidation() {
 
@@ -129,5 +138,23 @@ function profileValidation() {
    } else {
       return true;
    }
+
+}
+
+function validatelist() {
+
+   let a = document.getElementById('newList');
+   let badColor = "#ff6666";
+
+   if(a.value === "") {
+      let message = document.getElementById('no-list');
+      message.style.color = badColor;
+      message4.innerHTML = "List name shouldn\'t be empty";
+      return;
+
+   } else {
+      return true;
+   }
+
 
 }

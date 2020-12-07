@@ -100,7 +100,6 @@ form-control {
 }
 
 .form-control:hover {
-  color: #ffffff !important;
   background: #f6b93b;
   border-color: #f6b93b !important;
   transition: all 0.4s ease 0s;
@@ -120,6 +119,10 @@ img {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
+}
+
+.forposters {
+   width: 100%;
 }
 
 button.btnModal{
@@ -199,4 +202,8 @@ button.btnModal{
 
 .container {
    position: relative;
+}
+
+input {
+    color: #000000;
 }

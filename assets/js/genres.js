@@ -10,12 +10,10 @@ $('navbarDropdown').ready(function() {
 
 	function getGenres() {
 		$.getJSON(genresURL, function(upcomingData) {
-			console.log(upcomingData)
 			var genres = upcomingData.genres;
 			for (let i = 0; i < genres.length; i++) {
 				let genre = genres[i].name;
 				let genre_query = genSearchURL + "&with_genres=" + genres[i].id;
-				console.log(genre_query);
 				var genre_html = `<a class="dropdown-item" href="/genre?g=${genres[i].id}&genre_name=${genre}">${genre}</a>`
 				document.getElementById('navbarDropdownMenu').innerHTML += genre_html
 			}

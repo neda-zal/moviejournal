@@ -10,7 +10,6 @@ $('navbarDropdown').ready(function() {
 
 	function getGenres() {
 		$.getJSON(genresURL, function(upcomingData) {
-			console.log(upcomingData)
 			var genres = upcomingData.genres;
 			for (let i = 0; i < genres.length; i++) {
 				let genre = genres[i].name;

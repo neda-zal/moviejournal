@@ -43,26 +43,18 @@ $(document).ready(function() {
           upcomingHTML += '<a href="' + youtubeLink + '"><img src="' + poster + '"></a>';
           upcomingHTML += '</div><br>'; //close trailerLink
           upcomingHTML += '<div class="col-sm-6 movieDetails style="position: relative;">';
-          upcomingHTML += '<form action="/addtowatchlist" method="post">';
-          upcomingHTML += '<input id="movieId" style="display: none;" name="movietitle" value="'+ title + '" />';
-          upcomingHTML += '<input name="releaseDate" style="display: none;" value="' + releaseDate + '"/>';
-          upcomingHTML += '<input name="rating" style="display: none;" value="' + voteAverage + '"/>';
-          upcomingHTML += '<input name="overview" style="display: none;" value="' + overview + '"/>';
-          upcomingHTML += '<input name="poster" style="display: none;" value="' + poster + '"/>';
           upcomingHTML += '<div class="movieName">' + title + '</div><br>';
           upcomingHTML += '<div class="linkToTrailer"><a href="' + youtubeLink + '"><span class="glyphicon glyphicon-play"></span>&nbspPlay trailer</a>' + '</div><br>';
           upcomingHTML += '<div class="release">Release Date: ' + releaseDate + '</div><br>';
           upcomingHTML += '<div class="overview">' + overview + '</div><br>';
           upcomingHTML += '<div class="rating">Rating: ' + voteAverage + '/10</div><br>';
-          upcomingHTML += '<button type="submit" class="btn btn-primary pull-right mb-3">Add to watchlist</button><br>';
-          upcomingHTML += '</form></div>'; //close movieDetails
+          upcomingHTML += '</div>'; //close movieDetails
           upcomingHTML += '</div>'; //close modal-content
           upcomingHTML += '</div>'; //close modal-dialog
           upcomingHTML += '</div>'; //close modal
           upcomingHTML += '</div>'; //close off each div
 
           $('#movie-grid').append(upcomingHTML);
-
         });
       }
     });

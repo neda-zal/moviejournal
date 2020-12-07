@@ -50,7 +50,7 @@
       </div>
    </nav>
 
-   <div class="container">
+   <div class="container" style="position: relative;">
       <div style="text-align:right; " class="row">
          <div class="col-xs-6">
             <i style="text-align:center; font-size: 15rem; color: rgba(255, 255, 255, 0.589);" class="ace-icon fa fa-user"></i>
@@ -103,7 +103,32 @@
                   </div>
                </div>
             </div>
-            <!--  ---------------------------------------------- -->
+
+            <!-- Modal for new list-->
+            <div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                     <form class="newList" action="/newlist" method="post">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel">Create new list</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           <label for="newList">Enter list name:</label>
+                           <input type="Text" name="newlist" class="form-control mb-2" id="newList" placeholder="Example" required>
+                           <div id="no-list" style="font-size: 12px; padding-bottom:10px;"></div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                           <button type="submit" class="btn btn-primary" onclick="validatelist();">Save changes</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+
 
          </div>
       </div>
@@ -150,84 +175,84 @@
                      </div>
                   </div>
 
-
-
-                  <!-- Modal -->
-                  <div class="modal fade" id="modalAddMovie" tabindex="-1" role="dialog" aria-labelledby="modalAddMovie" aria-hidden="true">
-                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <h5 class="modal-title" id="modalAddMovie">Add this movie to a list</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                              </button>
-                           </div>
-                           <div class="modal-body">
-                              <select class="custom-select">
-                                 <option selected>watched</option>
-                                 <option value="1">to watch</option>
-                                 <option value="2">favourites</option>
-                                 <option value="3">other</option>
-                              </select>
-
-                              <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3"
-                                    id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
-                              </div>
-
-                              <textarea class="form-control" rows="5" placeholder="Insert your review here" id="comment"></textarea>
-                           </div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-danger">Remove from list</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                </div>
 
                <div id="reviews" class="tab-pane">
-                  <p class="h1 text-center">put reviews here</p>
 
-                  <div class="card-deck">
+                  {{#each reviews}}
+                  <div class="card-deck my-3 mr-1 col-4" style="float: left;">
                      <div class="card">
-                        <img class="card-img-top" src="http://henrycavill.org/images/Films/2013-Man-of-Steel/posters/3-Walmart-Superman-a.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="{{this.poster}}" alt="Card image cap" style="width: 250px;">
                         <div class="card-body">
-                           <h5 class="card-title">Man Of Steel</h5>
-                           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                           <p class="card-text"><small class="text-muted">Rating: </small> 4/5 </p>
+                           <h5 class="card-title">{{this.movietitle}}</h5>
+                           <p class="card-text">{{this.comment}}</p>
+                           <p class="card-text"><small class="text-muted">Rating: </small> {{this.rating}}/5 </p>
                         </div>
                      </div>
 
-                     <div class="card">
-                        <img class="card-img-top" src="http://cdn.collider.com/wp-content/uploads/2017/03/the-dark-tower-poster.jpg" alt="Card image cap">
-                        <div class="card-body">
-                           <h5 class="card-title">The Card Tower</h5>
-                           <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                           <p class="card-text"><small class="text-muted">Rating: </small> 4/5 </p>
-                        </div>
-                     </div>
-                     <div class="card">
-                        <img class="card-img-top" src="http://cdn.collider.com/wp-content/uploads/2017/05/blade-runner-2049-poster-ryan-gosling.jpeg" alt="Card image cap">
-                        <div class="card-body">
-                           <h5 class="card-title">Blade Runner</h5>
-                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                           <p class="card-text"><small class="text-muted">Rating: </small> 5/5 </p>
-                        </div>
-                     </div>
                   </div>
+
+                  {{/each}}
 
 
                </div>
+
                <div id="mymovies" class="tab-pane">
 
                </div>
+
                <div id="watchlist" class="tab-pane">
-                  <p class="h1 text-center">put watchlist here, just like upcomingmovie</p>
+
+                  <div id="movie-display">
+                  	<div class="container">
+                  		<div class="row">
+                  			<div class="genreLabel">
+                  				<h1 id="movieGenreLabel"></h1>
+                           </div>
+                  				<div id="movie-grid">
+
+                                 {{#each movies}}
+
+                                 <div class="col-sm-4 eachMovie">
+                                    <button type="button" class="btnModal" data-toggle="modal" data-target="#watchlist{{this.id}}" data-whatever="@{{this.id}}">
+                                       <img class="forposters" src="{{this.poster}}">
+                                    </button>
+
+
+                                    <div class="modal fade" id="watchlist{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                       <div class="modal-dialog" role="document">
+                                          <div class="modal-content col-sm-12" style="display: block; flex-direction: row;">
+                                             <div class="col-sm-6 moviePosterInModal">
+                                                <img src="{{this.poster}}"></a>
+                                             </div>
+                                             <br>
+                                             <div class="col-sm-6 movieDetails style="position: relative;">
+                                                <div class="movieName"><strong>{{this.movietitle}}</strong></div>
+                                                <br>
+                                                <div class="release">Release Date: {{this.releaseDate}}</div>
+                                                <br>
+                                                <div class="overview">{{this.overview}}</div>
+                                                <br>
+                                                <div class="rating">Rating: {{this.vote}}/10</div>
+                                                <br>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                              </div>
+
+                              {{/each}}
+                  			</div>
+                  		</div>
+                  	</div>
+               	</div>
+
                </div>
 
                <div id="lists" class="tab-pane">
-                  <p class="h1 text-center">put lists here</p>
+                  <button type="button" class="btn btn-primary pull-right mt-3" data-toggle="modal" data-target="#listModal">
+                     Create new list
+                  </button>
 
 
                </div>
